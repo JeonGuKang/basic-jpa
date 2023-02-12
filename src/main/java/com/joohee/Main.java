@@ -1,6 +1,7 @@
 package com.joohee;
 
 import javax.persistence.*;
+import java.util.Arrays;
 import java.util.List;
 
 public class Main {
@@ -12,25 +13,29 @@ public class Main {
 
         try {
 
-            Team team = new Team();
-            team.setName("teamA");
-            em.persist(team);
+//            Team team = new Team();
+//            team.setName("teamA");
+//            em.persist(team);
+//
+//            Member member = new Member();
+//            member.setUsername("memberA");
+//            member.setAge(10);
+//            member.setTeam(team);
+//            em.persist(member);
 
-            Member member = new Member();
-            member.setUsername("memberA");
-            member.setAge(10);
-            member.setTeam(team);
-            em.persist(member);
+            Member findMember = em.find(Member.class, 2L);
+            System.out.println("findMember = " + findMember.getId());
+            System.out.println("findMember.Username = " + findMember.getUsername());
 
-            em.flush();
-            em.clear();
+//            em.flush();
+//            em.clear();
 
-            String query = "select m from Member m, Team t where m.username =  t.name";
+//            String query = "select m from Member m, Team t where m.username =  t.name";
+//
+//            List<Member> result = em.createQuery(query, Member.class)
+//                    .getResultList();
 
-            List<Member> result = em.createQuery(query, Member.class)
-                    .getResultList();
-
-            System.out.println("result = " + result.size());
+//            System.out.println("result = " + result.size());
 
             tx.commit();
         } catch (Exception e) {
