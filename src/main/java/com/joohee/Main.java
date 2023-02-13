@@ -24,12 +24,13 @@ public class Main {
 //            em.persist(member);
 
             Member findMember = em.find(Member.class, 2L);
-            System.out.println("findMember = " + findMember.getId());
+            findMember.setUsername("fffaa");
             System.out.println("findMember.Username = " + findMember.getUsername());
 
 //            em.flush();
-//            em.clear();
-
+            em.clear();
+            Member findMember2 = em.find(Member.class, 2L);
+            System.out.println("findMember.Username2 = " + findMember2.getUsername());
 //            String query = "select m from Member m, Team t where m.username =  t.name";
 //
 //            List<Member> result = em.createQuery(query, Member.class)
