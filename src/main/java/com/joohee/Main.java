@@ -13,30 +13,30 @@ public class Main {
 
         try {
 
-//            Team team = new Team();
-//            team.setName("teamA");
-//            em.persist(team);
-//
-//            Member member = new Member();
-//            member.setUsername("memberA");
-//            member.setAge(10);
-//            member.setTeam(team);
-//            em.persist(member);
+            Team team = new Team();
+            team.setName("teamA");
+            em.persist(team);
+
+            Member member = new Member();
+            member.setUsername("memberA");
+            member.setAge(10);
+            member.setTeam(team);
+            em.persist(member);
 
             Member findMember = em.find(Member.class, 2L);
             findMember.setUsername("fffaa");
             System.out.println("findMember.Username = " + findMember.getUsername());
 
-//            em.flush();
+            em.flush();
             em.clear();
             Member findMember2 = em.find(Member.class, 2L);
             System.out.println("findMember.Username2 = " + findMember2.getUsername());
-//            String query = "select m from Member m, Team t where m.username =  t.name";
-//
-//            List<Member> result = em.createQuery(query, Member.class)
-//                    .getResultList();
+            String query = "select m from Member m, Team t where m.username =  t.name";
 
-//            System.out.println("result = " + result.size());
+            List<Member> result = em.createQuery(query, Member.class)
+                    .getResultList();
+
+            System.out.println("result = " + result.size());
 
             tx.commit();
         } catch (Exception e) {
