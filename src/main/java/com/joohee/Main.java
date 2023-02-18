@@ -1,6 +1,7 @@
 package com.joohee;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 
@@ -17,10 +18,13 @@ public class Main {
             team.setName("teamA");
             em.persist(team);
 
+            LocalDate currentDate = LocalDate.now();
+            System.out.println("currentDate = " + currentDate.getDayOfMonth());
             Member member = new Member();
             member.setUsername("memberA");
             member.setAge(10);
             member.setTeam(team);
+
             em.persist(member);
 
             Member findMember = em.find(Member.class, 2L);

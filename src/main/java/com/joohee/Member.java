@@ -1,13 +1,14 @@
 package com.joohee;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 @Entity
-public class Member {
+class Member {
 
     @Id
     @GeneratedValue
@@ -21,6 +22,7 @@ public class Member {
         this.team = team;
         team.getMembers().add(this);
     }
+
     private String username;
 
     private int age;
