@@ -16,7 +16,7 @@ class Member {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "TEAM_ID")
-    private  Team team;
+    private Team team;
 
     public void changeTeam(Team team){
         this.team = team;
@@ -53,6 +53,10 @@ class Member {
 
     public void setTeam(Team team) {
         this.team = team;
+    }
+
+    public Team getTeam() {
+        return team;
     }
 
     @Override

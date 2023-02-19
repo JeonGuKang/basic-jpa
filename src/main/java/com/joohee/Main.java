@@ -27,20 +27,31 @@ public class Main {
 
             em.persist(member);
 
-            Member findMember = em.find(Member.class, 2L);
-            findMember.setUsername("fffaa");
-            System.out.println("findMember.Username = " + findMember.getUsername());
+//            Member findMember = em.find(Member.class, 2L);
+//            findMember.setUsername("fffaa");
+//            Team findTeam = findMember.getTeam();
+//            System.out.println("findMember.Username = " + findMember.getUsername());
+//            System.out.println("findTeam team = " + findTeam);
 
-            em.flush();
-            em.clear();
-            Member findMember2 = em.find(Member.class, 2L);
-            System.out.println("findMember.Username2 = " + findMember2.getUsername());
-            String query = "select m from Member m, Team t where m.username =  t.name";
+            team.getMembers().add(member);
+//            em.flush();
+//            em.clear();
 
-            List<Member> result = em.createQuery(query, Member.class)
-                    .getResultList();
+            Team findTeam = em.find(Team.class, team.getId());
+            List<Member> members = findTeam.getMembers();
+//            Member findMember2 = em.find(Member.class, 2L);
+//            System.out.println("findMember.Username2 = " + findMember2.getUsername());
+//            List<Member> members = member.getTeam().getMembers();
 
-            System.out.println("result = " + result.size());
+            for(Member m : members) {
+                System.out.println("m = " + m.getUsername());
+            }
+//            String query = "select m from Member m, Team t where m.username =  t.name";
+//
+//            List<Member> result = em.createQuery(query, Member.class)
+//                    .getResultList();
+//
+//            System.out.println("result = " + result.size());
 
             tx.commit();
         } catch (Exception e) {
